@@ -1,3 +1,3 @@
 A simple webb based application using Flask. 
 
-This is my project for a school assignment.
+This is a project for my assignment on the course Webbramrverk.
