@@ -45,7 +45,7 @@
         ***********************************-->')}}
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="{{ url_for('templates', filename = 'index.html')}}">
+                <a href="{{url_for('index')}}">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -255,7 +255,7 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ url_for('templates', filename = './index.html')}}">Home 1</a></li>
+                            <li><a href="{{url_for('index')}}">Home 1</a></li>
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
                     </li>
@@ -983,7 +983,7 @@
     <script src="{{ url_for('static', filename = 'js/gleek.js')}}"></script>
     <script src="{{ url_for('static', filename = 'js/styleSwitcher.js')}}"></script>
 
-    <!-- Chartjs -->')}}
+    <!-- Chartjs -->
     <script src="{{ url_for('static', filename = './plugins/chart.js/Chart.bundle.min.js')}}"></script>
     <!-- Circle progress -->
     <script src="{{ url_for('static', filename = './plugins/circle-progress/circle-progress.min.js')}}"></script>
