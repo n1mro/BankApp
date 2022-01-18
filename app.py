@@ -13,7 +13,12 @@ migrate = Migrate(app, db)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    index_body_parameters = {
+    "number_of_customers": Customer.query.count(),
+    "number_of_accounts": Account.query.count(),
+    "total_amount_in_accounts": 735657 #Account.Balance.query.func.sum()
+    }
+    return render_template('index.html', **index_body_parameters)
 
 
 if __name__ == "__main__":
