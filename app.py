@@ -17,7 +17,7 @@ def index():
     index_body_parameters = {
     "number_of_customers": Customer.query.count(),
     "number_of_accounts": Account.query.count(),
-    "total_amount_in_accounts": (x:=db.session.query(func.sum(Account.Balance)).scalar())
+    "total_amount_in_accounts": db.session.query(func.sum(Account.Balance)).scalar()
     }
     print(index_body_parameters)
     return render_template('index.html', **index_body_parameters)
