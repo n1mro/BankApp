@@ -31,6 +31,8 @@
       href="{{ url_for('static',filename = 'css/style.css')}}"
       rel="stylesheet"
     />
+    <!-- Test -->
+    <link href="{{url_for('static',filename = './plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
   </head>
 
   <body>
@@ -62,7 +64,7 @@
     <div id="main-wrapper">
       <!--**********************************
             Nav header start
-        ***********************************-->')}}
+        ***********************************-->
       <div class="nav-header">
         <div class="brand-logo">
           <a href="{{url_for('index')}}">
@@ -631,5 +633,11 @@
     <script src="{{ url_for('static', filename = './plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
     <script src="{{ url_for('static', filename = './js/dashboard/dashboard-1.js')}}"></script>
+
+    <!-- Extra skit -->
+    <script src="{{ url_for('static', filename = './plugins/tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = './plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = './plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script>
+
   </body>
 </html>
