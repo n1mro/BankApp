@@ -3,6 +3,10 @@
 {% block title %}
 Startsida
 {% endblock title%}
+{% block header_link %}
+<link href="{{url_for('static',filename = './plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+{% endblock header_link%}
+
 
 {% block content %}
         <div class="content-body">
@@ -524,3 +528,10 @@ Startsida
             <!-- #/ container -->
         </div>
 {% endblock content %}
+{% block custom_scripts %}
+
+<script src="{{ url_for('static', filename = './plugins/tables/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ url_for('static', filename = './plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ url_for('static', filename = './plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script>
+
+{% endblock custom_scripts %}

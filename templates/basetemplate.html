@@ -31,9 +31,10 @@
       href="{{ url_for('static',filename = 'css/style.css')}}"
       rel="stylesheet"
     />
-    <!-- Test -->
-    <link href="{{url_for('static',filename = './plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-  </head>
+    <!-- Custom header links -->
+    {% block header_links %}
+    {% endblock header_links %}
+   </head>
 
   <body>
     <!--*******************
@@ -634,10 +635,8 @@
 
     <script src="{{ url_for('static', filename = './js/dashboard/dashboard-1.js')}}"></script>
 
-    <!-- Extra skit -->
-    <script src="{{ url_for('static', filename = './plugins/tables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ url_for('static', filename = './plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{ url_for('static', filename = './plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script>
-
+    <!-- Custom scripts -->
+    {% block custom_scripts %}
+    {% endblock custom_scripts %}
   </body>
 </html>
