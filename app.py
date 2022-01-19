@@ -23,7 +23,7 @@ def index():
 
 @app.route("/table")
 def table():
-    return render_template('datatableBasetemplate.html', customer_list = Customer.query.limit(5000))
+    return render_template('tabledataBasetemplate.html', customer_list = Customer.query.limit(100))
 
 
 
