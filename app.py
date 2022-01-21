@@ -1,9 +1,7 @@
-from turtle import home
-from flask import Flask, render_template
+from flask import Flask
 from views.home import home
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
-from models import db, seedData, Account, Customer, Transaction
+from views.listCustomers import listCostumers
+from models import db, seedData
 from flask_migrate import Migrate, upgrade
 
 
@@ -15,10 +13,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 app.register_blueprint(home, url_prefix='/')
-
-@app.route("/table")
-def table():
-    return render_template('tabledataBasetemplate.html', customer_list = Customer.query.limit(100))
+app.register_blueprint(listCostumers, url_prefix='/customers')
 
 
 

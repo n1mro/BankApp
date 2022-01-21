@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template
 from models import Customer, Account, db
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
 
