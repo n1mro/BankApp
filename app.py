@@ -1,6 +1,6 @@
 from flask import Flask
 from views.home import home
-from views.listCustomers import listCostumers
+from views.customers import customers
 from models import db, seedData
 from flask_migrate import Migrate, upgrade
 
@@ -13,7 +13,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 app.register_blueprint(home, url_prefix='/')
-app.register_blueprint(listCostumers, url_prefix='/customers')
+app.register_blueprint(customers, url_prefix='/customers')
 
 
 
