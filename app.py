@@ -1,4 +1,6 @@
+from turtle import home
 from flask import Flask, render_template
+from views.home import home
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from models import db, seedData, Account, Customer, Transaction
@@ -12,14 +14,7 @@ db.app = app
 db.init_app(app)
 migrate = Migrate(app, db)
 
-@app.route("/")
-def index():
-    index_body_parameters = {
-    "number_of_customers": Customer.query.count(),
-    "number_of_accounts": Account.query.count(),
-    "total_amount_in_accounts": db.session.query(func.sum(Account.Balance)).scalar()
-    }
-    return render_template('index.html', **index_body_parameters)
+app.register_blueprint(home, url_prefix='/')
 
 @app.route("/table")
 def table():
