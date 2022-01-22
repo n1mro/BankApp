@@ -44,42 +44,42 @@
                                 <thead>
                                     <tr>
                                       <th>ID
-                                          <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='id' )}}"
+                                          <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Id', q=q )}}"
                                           ><i class="fa fa-caret-up" aria-hidden="true"></i
                                           ></a>
-                                          <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='id')}}"
+                                          <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Id', q=q)}}"
                                           ><i class="fa fa-caret-down" aria-hidden="true"></i
                                           ></a>
                                       </th>
                                       <th>National ID
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='national_id' )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='NationalId', q=q )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='national_id')}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='NationalId', q=q)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Name
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='given_name' )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='GivenName', q=q )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='given_name')}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='GivenName', q=q)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Address
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='streetaddress' )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Streetaddress', q=q )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='streetaddress')}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Streetaddress', q=q)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Country
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='country' )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Country', q=q )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='country')}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Country', q=q)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>                                          
                                       </th>
@@ -100,6 +100,25 @@
                       
                                     {% endfor %}
                                   </tbody>
+                                  <tfoot>
+                                      <td>
+                                        {% if has_prev %}
+                                        <a href="{{url_for('customers.table_of_customers', page=page-1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
+                                        ><button type="button" class="btn mb-1 btn-outline-dark">Prev</button></a
+                                        >
+                                        {% endif %}
+                                        </td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td>
+                                        {% if has_next %}
+                                        <a href="{{url_for('customers.table_of_customers', page=page+1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
+                                        ><button type="button" class="btn mb-1 btn-outline-dark">Next</button></a>
+                                        {% endif %}
+                                        </td>
+                                  </tfoot>
                             </table>
                         </div>
                     </div>
