@@ -16,70 +16,63 @@
     <!-- row -->
 
     <div class="container-fluid">
-        <!-- <div class="row">
-            <div class="col-sm-12 col-md-6">
-                Sök: <form method="get">
-                    <input type=text placeholder="search"  name="q">
-                    <input class="btn" type=submit value="Sök">
-                </form>
-            </div>
-        </div> -->
         <div class="row">
             <!-- /# column -->
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Alla personer</h1>
-                        Sök: <form method="get">
-                                <input type=text placeholder="search" value="{{ q }}" name="q">
-                                <input class="btn" type=submit value="Sök">
-                            </form>
+                       <div class="card-title col-md">
+                           <h3>Customers</h3>
+                       </div>
+                      <div class="card-title col-md">   
+                        <form method="get">
+                              <input type=text placeholder="search" value="{{ q }}" name="q">
+                              <input class="btn" type=submit value="Search">
+                        </form>
+                      </div>
                     </div>
                     <div class="card-body">
-                        <div class="card-title">
-                            <h4>Customers</h4>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                       <th>ID
-                                          <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Id', q=q )}}"
+                                          <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Id', q=q ,page=page)}}"
                                           ><i class="fa fa-caret-up" aria-hidden="true"></i
                                           ></a>
-                                          <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Id', q=q)}}"
+                                          <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Id', q=q,page=page)}}"
                                           ><i class="fa fa-caret-down" aria-hidden="true"></i
                                           ></a>
                                       </th>
                                       <th>National ID
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='NationalId', q=q )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='NationalId', q=q,page=page )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='NationalId', q=q)}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='NationalId', q=q,page=page)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Name
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='GivenName', q=q )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='GivenName', q=q ,page=page)}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='GivenName', q=q)}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='GivenName', q=q,page=page)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Address
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Streetaddress', q=q )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Streetaddress', q=q,page=page )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Streetaddress', q=q)}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Streetaddress', q=q,page=page)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>
                                       </th>
                                       <th>Country
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Country', q=q )}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='asc', sort_column='Country', q=q,page=page )}}"
                                         ><i class="fa fa-caret-up" aria-hidden="true"></i
                                         ></a>
-                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Country', q=q)}}"
+                                        <a href="{{url_for('customers.table_of_customers', sort_order='desc', sort_column='Country', q=q,page=page)}}"
                                         ><i class="fa fa-caret-down" aria-hidden="true"></i
                                         ></a>                                          
                                       </th>
@@ -87,7 +80,7 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    {% for customer in customer_list %}
+                                    {% for customer in pagination.items %}
                       
                                     <tr>
                                       <td>{{customer.Id}}</td>
@@ -100,26 +93,58 @@
                       
                                     {% endfor %}
                                   </tbody>
-                                  <tfoot>
-                                      <td>
-                                        {% if has_prev %}
-                                        <a href="{{url_for('customers.table_of_customers', page=page-1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
-                                        ><button type="button" class="btn mb-1 btn-outline-dark">Prev</button></a
-                                        >
+                                </table>
+                                <!--  Pagination -->
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-end">
+                                    <!-- Previous button in pagination -->
+                                    {% if pagination.has_prev %}
+                                    <li class="page-item">
+                                      <a class="page-link" href="{{url_for('customers.table_of_customers',page=page-1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
+                                       tabindex="0">Previous</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item disabled">
+                                      <a class="page-link" href="#"
+                                       tabindex="-1">Previous</a>
+                                    </li>
+                                    {% endif%}
+                                    <!-- /# Previous button in pagination -->
+                                    <!-- Pages buttons in pagination -->
+                                    {% for page in pagination.iter_pages(left_edge=2, right_edge=2, left_current=3, right_current=3) %}
+                                      {% if page %}
+                                        {% if page != pagination.page %}
+                                          <li class="page-item"
+                                          ><a class="page-link" href="{{ url_for('customers.table_of_customers',page=page,sort_order=sort_order, sort_column=sort_column, q=q) }}">{{ page }}</a
+                                          ></li>
+                                        {% else %}
+                                        <li class="page-item disabled">
+                                          <a href="#" class="page-link"><strong>{{ page }}</strong></a>
+                                        </li>
                                         {% endif %}
-                                        </td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td></td>
-                                      <td>
-                                        {% if has_next %}
-                                        <a href="{{url_for('customers.table_of_customers', page=page+1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
-                                        ><button type="button" class="btn mb-1 btn-outline-dark">Next</button></a>
-                                        {% endif %}
-                                        </td>
-                                  </tfoot>
-                            </table>
+                                      {% else %}
+                                      <li class="page-item disabled">
+                                        <a href="#" class="page-link"><span class=ellipsis>…</span></a>
+                                      </li>
+                                      {% endif %}
+                                    {%- endfor %}
+                                    <!-- #/ Pages button in pagination -->
+                                    <!-- Next button in pagination -->
+                                    {% if pagination.has_next %}
+                                    <li class="page-item">
+                                      <a class="page-link" href="{{url_for('customers.table_of_customers', page=page+1,sort_order=sort_order, sort_column=sort_column, q=q)}}"
+                                      tabindex="0">Next</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item disabled">
+                                      <a class="page-link" href="#"
+                                      tabindex="-1">Next</a>
+                                    </li>
+                                    {% endif %}
+                                    <!-- /# Next button in pagination -->
+                                  </ul>
+                                </nav>
+                                <!-- /# Pagination -->
                         </div>
                     </div>
                 </div>
