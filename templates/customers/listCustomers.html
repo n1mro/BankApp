@@ -88,7 +88,7 @@
                                       <td>{{customer.GivenName}}</td>
                                       <td>{{customer.Streetaddress}}</td>
                                       <td>{{customer.Country}}</td>
-                                      <td><a href="#"></a><i class="fa fa-external-link-square" aria-details="true"></i></td>
+                                      <td><a href="{{url_for('customers.customer_page',id = customer.Id)}}"><i class="fa fa-external-link-square" aria-details="true"></i></a></td>
                                     </tr>
                       
                                     {% endfor %}
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <!-- /# card -->
-            </div>
+            </div>  
             
         </div>
     </div>

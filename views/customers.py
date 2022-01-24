@@ -19,10 +19,10 @@ class CustomerColumn(Enum):
     Country = "Country"
 
 def sort_order_func(sort_order:SortOrder, column:CustomerColumn):
-    column_to_be_sorted = select_column(column)
+    column_to_be_sorted = select_customer_column(column)
     return column_to_be_sorted.desc if sort_order==SortOrder.desc else column_to_be_sorted.asc
 
-def select_column(column:CustomerColumn):
+def select_customer_column(column:CustomerColumn):
     if column == CustomerColumn.Id:
         return Customer.Id
     elif column == CustomerColumn.NationalId:
@@ -64,5 +64,11 @@ def table_of_customers():
             sort_order=sort_order,
             sort_column=sort_column,
             q=q,
-            pagination=pagination_object,
-            pages=pagination_object.pages)
+            pagination=pagination_object)
+
+
+@customers.route("/<id>")
+def customer_page(id):
+    customer = Customer.query.where(Customer.Id==id).first()
+    return render_template('customers/customerPage.html', customer=customer)
+    
