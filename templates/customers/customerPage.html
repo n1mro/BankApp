@@ -22,46 +22,141 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="media align-items-center mb-4">
-                            <img class="mr-3" src="images/avatar/11.png" width="80" height="80" alt="">
                             <div class="media-body">
-                                <h3 class="mb-0">{{customer.GivenName}}</h3>
-                                <p class="text-muted mb-0">{{customer.Country}}</p>
+                                <h3 class="mb-0">Customer #{{customer.Id}}</h3>
                             </div>
                         </div>
                         
-                        <div class="row mb-5">
+                        <div class="row mb-2">
                             <div class="col">
                                 <div class="card card-profile text-center">
-                                    <span class="mb-1 text-primary"><i class="icon-people"></i></span>
-                                    <h3 class="mb-0">263</h3>
-                                    <p class="text-muted px-4">Following</p>
+                                    <span class="mb-1 text-primary"><i class="fa fa-user-circle"></i></span>
+                                    <h3 class="mb-0">{{customer.GivenName}} {{customer.Surname}}</h3>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card card-profile text-center">
-                                    <span class="mb-1 text-warning"><i class="icon-user-follow"></i></span>
-                                    <h3 class="mb-0">263</h3>
-                                    <p class="text-muted">Followers</p>
+                                    <span class="mb-1 text-warning"><i class="fa fa-money"></i></span>
+                                    <h3 class="mb-0">Total: {{account_balance_sum}}</h3>
                                 </div>
                             </div>
-                            <div class="col-12 text-center">
-                                <button class="btn btn-danger px-5">Follow Now</button>
+                        </div>
+                        <!-- Tab start -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Customer Info</h4>
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs mb-3" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile8"><span><i class="ti-user"></i></span></a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home8"><span><i class="ti-home"></i></span></a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages8"><span><i class="ti-email"></i></span></a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#contact8"><span><i class="ti-mobile"></i></span></a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content tabcontent-border">
+                                    <div class="tab-pane fade show active" id="profile8" role="tabpanel">
+                                        <div class="p-t-15">
+                                            <h4>Profile</h4>
+                                            <ul class="card-profile__info">
+                                                <li><strong class="text-dark mr-2">Surname:</strong> <span>{{customer.Surname}}</span></li>
+                                                <li><strong class="text-dark mr-2">Given Name:</strong> <span>{{customer.GivenName}}</span></li>
+                                                <li><strong class="text-dark mr-2">National Id:</strong> <span>{{customer.NationalId}}</span></li>
+                                                <li><strong class="text-dark mr-2">Birthday:</strong> <span>{{customer.Birthday}}</span></li>
+                                                <li><strong class="text-dark mr-2">Customer Id:</strong> <span>{{customer.Id}}</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="home8" role="tabpanel">
+                                        <div class="p-t-15">
+                                            <h4>Address</h4>
+                                            <ul>
+                                                <li><strong class="text-dark mr-2">Street Address:</strong>{{customer.Streetaddress}}</li>
+                                                <li><strong class="text-dark mr-2">Zip Code:</strong>{{customer.Zipcode}}</li>
+                                                <li><strong class="text-dark mr-2">City:</strong> {{customer.City}}</li>
+                                                <li><strong class="text-dark mr-2">Country:</strong> {{customer.Country}}</li>
+                                                <li><strong class="text-dark mr-2">Country Code:</strong> {{customer.CountryCode}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="messages8" role="tabpanel">
+                                        <div class="p-t-15">
+                                            <h4>Email</h4>
+                                            <ul class="card-profile__info">
+                                                <li><strong class="text-dark mr-2">Email Address:</strong> <span>{{customer.EmailAddress}}</span></li>
+                                                </ul>
+                                           </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact8" role="tabpanel">
+                                        <div class="p-t-15">
+                                            <h4>Email</h4>
+                                            <ul class="card-profile__info">
+                                                <li><strong class="text-dark mr-2">Telephone Country Code:</strong> <span>{{customer.TelephoneCountryCode}}</span></li>
+                                                <li><strong class="text-dark mr-2">Telephone Number:</strong> <span>{{customer.Telephone}}</span></li>
+                                                </ul>
+                                           </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <h4>About Me</h4>
+                        <!-- <h4>About Me</h4>
                         <p class="text-muted">Hi, I'm Pikamy, has been the industry standard dummy text ever since the 1500s.</p>
                         <ul class="card-profile__info">
                             <li class="mb-1"><strong class="text-dark mr-4">Mobile</strong> <span>01793931609</span></li>
                             <li><strong class="text-dark mr-4">Email</strong> <span>name@domain.com</span></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>  
             </div>
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        
+                        <div class="card-title">
+                                <h4>Table Striped</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th>Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>1</th>
+                                                <td>Kolor Tea Shirt For Man</td>
+                                                <td><span class="badge badge-primary px-2">Sale</span>
+                                                </td>
+                                                <td>January 22</td>
+                                                <td class="color-primary">$21.56</td>
+                                            </tr>
+                                            <tr>
+                                                <th>2</th>
+                                                <td>Kolor Tea Shirt For Women</td>
+                                                <td><span class="badge badge-danger px-2">Tax</span>
+                                                </td>
+                                                <td>January 30</td>
+                                                <td class="color-success">$55.32</td>
+                                            </tr>
+                                            <tr>
+                                                <th>3</th>
+                                                <td>Blue Backpack For Baby</td>
+                                                <td><span class="badge badge-success px-2">Extended</span>
+                                                </td>
+                                                <td>January 25</td>
+                                                <td class="color-danger">$14.85</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                     </div>
                 </div>
                 </div>

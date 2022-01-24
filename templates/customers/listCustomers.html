@@ -88,7 +88,8 @@
                                       <td>{{customer.GivenName}}</td>
                                       <td>{{customer.Streetaddress}}</td>
                                       <td>{{customer.Country}}</td>
-                                      <td><a href="{{url_for('customers.customer_page',id = customer.Id)}}"><i class="fa fa-external-link-square" aria-details="true"></i></a></td>
+                                      <td><a href="{{url_for('customers.customer_page',id = customer.Id)}}" data-toggle="tooltip" data-placement="top" title="Go To"
+                                        ><i class="fa fa-external-link-square" aria-details="true"></i></a></td>
                                     </tr>
                       
                                     {% endfor %}
@@ -111,7 +112,7 @@
                                     {% endif%}
                                     <!-- /# Previous button in pagination -->
                                     <!-- Pages buttons in pagination -->
-                                    {% for page in pagination.iter_pages(left_edge=2, right_edge=2, left_current=3, right_current=3) %}
+                                    {% for page in pagination.iter_pages(left_edge=2, right_edge=2, left_current=2, right_current=2) %}
                                       {% if page %}
                                         {% if page != pagination.page %}
                                           <li class="page-item"
