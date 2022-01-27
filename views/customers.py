@@ -5,6 +5,7 @@ from enum import Enum
 
 customers = Blueprint('customers',__name__, template_folder='templates')
 
+
 class ColumnError(Exception):
     def __init__(self, message:str = "Not implemented or not a valid CustomerColumn variable!") -> None:
         self.message = message
@@ -82,3 +83,4 @@ def customer_page(id):
              accounts=customer_accounts,
              account_balance_sum = sum_of_accounts_balance)
     
+

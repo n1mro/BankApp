@@ -1,19 +1,11 @@
 {% extends 'basetemplate.html' %} 
+{% from "macros/table.html" import render_account_table %}
 
 {% block title %} Customer Page {% endblock title%}
 
 
 {% block content %}
 <div class="content-body">
-
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-            </ol>
-        </div>
-    </div>
     <!-- row -->
 
     <div class="container-fluid">
@@ -37,7 +29,7 @@
                             <div class="col">
                                 <div class="card card-profile text-center">
                                     <span class="mb-1 text-warning"><i class="fa fa-money"></i></span>
-                                    <h3 class="mb-0">Total: {{account_balance_sum}}</h3>
+                                    <h3 class="mb-0">Total Balance: {{account_balance_sum}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -116,46 +108,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                                <h4>Table Striped</h4>
+                                <h4>Accounts</h4>
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Status</th>
-                                                <th>Date</th>
-                                                <th>Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th>1</th>
-                                                <td>Kolor Tea Shirt For Man</td>
-                                                <td><span class="badge badge-primary px-2">Sale</span>
-                                                </td>
-                                                <td>January 22</td>
-                                                <td class="color-primary">$21.56</td>
-                                            </tr>
-                                            <tr>
-                                                <th>2</th>
-                                                <td>Kolor Tea Shirt For Women</td>
-                                                <td><span class="badge badge-danger px-2">Tax</span>
-                                                </td>
-                                                <td>January 30</td>
-                                                <td class="color-success">$55.32</td>
-                                            </tr>
-                                            <tr>
-                                                <th>3</th>
-                                                <td>Blue Backpack For Baby</td>
-                                                <td><span class="badge badge-success px-2">Extended</span>
-                                                </td>
-                                                <td>January 25</td>
-                                                <td class="color-danger">$14.85</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    {{ render_account_table(accounts)}}
                                 </div>
                     </div>
                 </div>
