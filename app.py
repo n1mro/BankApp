@@ -10,7 +10,7 @@ app.config.from_object('config.ConfigDebug')
 
 db.app = app
 db.init_app(app)
-migrate = Migrate(app, db)
+migrate = Migrate(app, db)  
 
 app.register_blueprint(home, url_prefix='/')
 app.register_blueprint(customers, url_prefix='/customer')
