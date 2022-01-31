@@ -93,7 +93,7 @@
               <span class="toggle-icon"><i class="icon-menu"></i></span>
             </div>
           </div>
-          <div class="header-left">
+          <!-- <div class="header-left">
             <div class="input-group icons">
               <div class="input-group-prepend">
                 <span
@@ -118,7 +118,7 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="header-right">
             <ul class="clearfix">
               <li class="icons dropdown">
@@ -368,35 +368,38 @@
       <div class="nk-sidebar">
         <div class="nk-nav-scroll">
           <ul class="metismenu" id="menu">
-            <li class="nav-label">Dashboard</li>
+            <li class="nav-label">Navigation</li>
             <li>
               <a
                 class="has-arrow"
                 href="javascript:void()"
                 aria-expanded="false"
               >
-                <i class="icon-speedometer menu-icon"></i
-                ><span class="nav-text">Dashboard</span>
+                <i class="icon-people menu-icon"></i
+                ><span class="nav-text">Customers</span>
               </a>
               <ul aria-expanded="false">
-                <li><a href="{{url_for('home.index')}}">Home</a></li>
+                <li><a href="{{url_for('customers.table_of_customers')}}">
+                  <i class="icon-magnifier menu-icon"></i>Serch Customer</a></li>
                 <!-- <li><a href="./index-2.html">Home 2</a></li> -->
               </ul>
             </li>
             {%  if current_user.is_authenticated    %}
-            <li class="sidenav__list-item">
-                <a href="{{ url_for('user.logout') }}">
-                    <i class="bx bx-log-out"></i>
-                    Logout</a>
+            <li>
+              <a href="{{ url_for('user.logout') }}" aria-expanded="false">
+                <i class="icon-logout menu-icon"></i
+                  >
+                  <span class="nav-text">Logout</span></a>
             </li>
-
             {%  else    %}
-                <li class="sidenav__list-item">
-                <a href="{{ url_for('user.login') }}">
-                    <i class="bx bx-log-out"></i>
-                    Login</a>
-                </li>
+            <li>
+              <a href="{{ url_for('user.login') }}" aria-expanded="false">
+                <i class="icon-login menu-icon"></i
+                  >
+                  <span class="nav-text">Login</span></a>
+            </li>
             {%  endif    %}
+            
           </ul>
         </div>
       </div>
