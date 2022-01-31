@@ -379,10 +379,24 @@
                 ><span class="nav-text">Dashboard</span>
               </a>
               <ul aria-expanded="false">
-                <li><a href="{{url_for('home.index')}}">Home 1</a></li>
+                <li><a href="{{url_for('home.index')}}">Home</a></li>
                 <!-- <li><a href="./index-2.html">Home 2</a></li> -->
               </ul>
             </li>
+            {%  if current_user.is_authenticated    %}
+            <li class="sidenav__list-item">
+                <a href="{{ url_for('user.logout') }}">
+                    <i class="bx bx-log-out"></i>
+                    Logout</a>
+            </li>
+
+            {%  else    %}
+                <li class="sidenav__list-item">
+                <a href="{{ url_for('user.login') }}">
+                    <i class="bx bx-log-out"></i>
+                    Login</a>
+                </li>
+            {%  endif    %}
           </ul>
         </div>
       </div>
