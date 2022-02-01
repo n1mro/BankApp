@@ -1,0 +1,70 @@
+{% extends 'basetemplate.html' %} 
+
+{% block title %} Account Page {% endblock title%}
+
+
+{% block content %}
+<div class="content-body">
+    <!-- row -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media align-items-center mb-4">
+                            <div class="media-body">
+                                <h3 class="mb-0">{{account.AccountType}}</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="card card-profile text-center">
+                                    <span class="mb-1 text-primary">
+                                        <i 
+                                        {% if account.AccountType == "Personal" %}
+                                        class="fa fa-suitcase" aria-hidden="true"
+
+                                        {% elif account.AccountType == "Checking" %}
+                                        class="fa fa-address-book" aria-hidden="true"
+                                        
+                                        {% else  %}
+                                        class="fa fa-bank" aria-hidden="true"
+                                        {% endif %}
+                                        ></i>
+                                    </span>
+                                    <h3 class="mb-0">Account id:{{account.Id}}</h3>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-profile text-center">
+                                    <span class="mb-1 text-warning"><i class="fa fa-money"></i></span>
+                                    <h3 class="mb-0">Balance: {{account.Balance}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h4>Transactions</h4>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <p>dfkljsdkfjhgöslkdfgöl</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+{% endblock content %}
+
+
