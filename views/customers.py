@@ -11,33 +11,33 @@ class ColumnError(Exception):
         self.message = message
         super().__init__(self.message)
 
-class SortOrder(Enum):
+class SortOrderEnum(Enum):
     asc = "asc"
     desc = "desc"
 
-class CustomerColumn(Enum):
+class CustomerColumnEnum(Enum):
     Id = "Id"
     NationalId = "NationalId"
     GivenName = "GivenName"
     Streetaddress = "Streetaddress"
     Country = "Country"
 
-def sort_order_func(sort_order:SortOrder, column:CustomerColumn):
+def sort_order_func(sort_order:SortOrderEnum, column:CustomerColumnEnum):
     """Retruns a callable Customer colum sort order function"""
     column_to_be_sorted = select_customer_column(column)
-    return column_to_be_sorted.desc if sort_order==SortOrder.desc else column_to_be_sorted.asc
+    return column_to_be_sorted.desc if sort_order==SortOrderEnum.desc else column_to_be_sorted.asc
 
-def select_customer_column(column:CustomerColumn):
+def select_customer_column(column:CustomerColumnEnum):
     """Returns a Customer colum"""
-    if column == CustomerColumn.Id:
+    if column == CustomerColumnEnum.Id:
         return Customer.Id
-    elif column == CustomerColumn.NationalId:
+    elif column == CustomerColumnEnum.NationalId:
         return Customer.NationalId
-    elif column == CustomerColumn.GivenName:
+    elif column == CustomerColumnEnum.GivenName:
         return Customer.GivenName
-    elif column == CustomerColumn.Streetaddress:
+    elif column == CustomerColumnEnum.Streetaddress:
         return Customer.Streetaddress
-    elif column == CustomerColumn.Country:
+    elif column == CustomerColumnEnum.Country:
         return Customer.Country
     else:
         raise ColumnError
@@ -59,7 +59,7 @@ def table_of_customers():
         Customer.Country.like(f"%{q}%") 
     )
 
-    sort_by = sort_order_func(SortOrder(sort_order),CustomerColumn(sort_by_column))
+    sort_by = sort_order_func(SortOrderEnum(sort_order),CustomerColumnEnum(sort_by_column))
 
     table_of_customer = table_of_customer.order_by(sort_by())
     pagination_object = table_of_customer.paginate(page,20,False)
