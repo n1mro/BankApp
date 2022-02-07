@@ -1,6 +1,6 @@
 pageNo = 2;
-    function fetchMore(){
-        url = "/api/{{ account.Id }}/transactions?page=" + pageNo;
+    function fetchMore(accountId){
+        url = "/account/api/" + accountId + "/transactions?page=" + pageNo;
         fetch(url)
             .then((response)=>response.json())            
             .then((json)=>{
@@ -9,11 +9,13 @@ pageNo = 2;
             });
         
     }
-    function tableElement(element) {
+    function tableElement(transaction) {
             document.querySelector('#posts-table tbody').innerHTML +=
                 `<tr>
-        <td>${element.cardtype}</td>
-        <td>${element.number}</td>
-        <td>${element.datum}</td>
+        <td>${transaction.Id}</td>
+        <td>${transaction.Type}</td>
+        <td>${transaction.Date}</td>
+        <td>${transaction.Amount}</td>
+        <td>${transaction.NewBalance}</td>
     </tr>`;
         }
