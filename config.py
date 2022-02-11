@@ -1,6 +1,10 @@
 class ConfigDebug:
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:password@localhost/BankApp'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:password@localhost/BankApp'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://rootSebastian:PythonElKudde12@bankappplushogskolan42.mysql.database.azure.com/webbdbbankapp'
     SECRET_KEY = "KALLEANKA"
+    FLASK_ENV = "development"
+    DEBUG=True
+    TESTING=False
 
     # Flask-Mail SMTP server settings
     MAIL_SERVER = '127.0.0.1'
