@@ -1,6 +1,7 @@
+from sql_uri import SQLALCHEMY_DATABASE_URI
 class ConfigDebug:
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:password@localhost/BankApp'
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://rootSebastian:PythonElKudde12@bankappplushogskolan42.mysql.database.azure.com/webbdbbankapp'
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI
     SECRET_KEY = "KALLEANKA"
     FLASK_ENV = "development"
     DEBUG=True
