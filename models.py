@@ -186,10 +186,10 @@ def seedData(db):
 
 
             customer.Accounts.append(account)
-        print("start db add+commit")
+
         db.session.add(customer)
         db.session.commit()
-        print("End commit")
+
         
         antal = antal + 1
 
