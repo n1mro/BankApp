@@ -4,7 +4,6 @@ import os
 load_dotenv()
 
 class ConfigDebug:
-    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:password@localhost/BankApp'
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_AZURE')
     SECRET_KEY = "KALLEANKA"
     FLASK_ENV = "development"
