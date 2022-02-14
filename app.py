@@ -1,7 +1,5 @@
 from flask import Flask
-from views.home import home
-from views.customers import customers
-from views.accounts import accounts
+from views import home,customers,accounts
 from models import db, seedData
 from flask_migrate import Migrate, upgrade
 from models import User, user_manager
