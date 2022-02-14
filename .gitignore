@@ -2,3 +2,4 @@
 /env
 /migrations
 sql_uri.py
+.env
