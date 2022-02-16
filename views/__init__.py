@@ -1,3 +1,3 @@
-from .accounts import accounts
-from .customers import customers
-from .home import home
+from .account.accounts import accounts
+from .customer.customers import customers
+from .index.home import home

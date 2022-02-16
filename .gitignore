@@ -3,3 +3,4 @@
 /migrations
 sql_uri.py
 .env
+*.pyc
