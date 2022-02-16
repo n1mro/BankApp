@@ -5,8 +5,7 @@ load_dotenv()
 
 class ConfigDebug:
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_AZURE')
-    SECRET_KEY = "KALLEANKA"
-    FLASK_ENV = "development"
+    SECRET_KEY = os.getenv('SECRET_KEY')
     DEBUG=True
     TESTING=False
 
