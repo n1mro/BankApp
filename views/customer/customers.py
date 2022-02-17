@@ -3,7 +3,7 @@ from models import Account, Customer
 from .customers_func import sort_order_func,SortOrderEnum,CustomerColumnEnum
 
 
-customers = Blueprint('customers',__name__, template_folder='templates')
+customers = Blueprint('customers',__name__)
 
 
 @customers.route("/list")

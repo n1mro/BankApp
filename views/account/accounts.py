@@ -1,12 +1,9 @@
 from flask import Blueprint, render_template, request, jsonify
-from sqlalchemy import false
 from models import Account, Transaction
+from .accounts_func import transaction_serialize
 
+accounts = Blueprint('accounts',__name__)
 
-accounts = Blueprint('accounts',__name__, template_folder='templates')
-
-def transaction_serialize(tr:Transaction) -> dict:
-    return {"Id" : tr.Id, "Type":tr.Type, "Date":tr.Date.strftime("%Y-%m-%d %H:%M:%S"), "Amount":tr.Amount, "NewBalance":tr.NewBalance}
 
 @accounts.route("/<id>")
 def account_page(id):

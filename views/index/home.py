@@ -3,7 +3,7 @@ from models import Customer, Account, db
 from sqlalchemy.sql import func
 
 
-home = Blueprint('home',__name__, template_folder='templates')
+home = Blueprint('home',__name__)
 
 @home.route('/')
 @home.route('/home')
