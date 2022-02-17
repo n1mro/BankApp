@@ -1,5 +1,5 @@
 from flask import Flask
-from views import home,customers,accounts
+from views import home,customers,accounts, transactions
 from models import db, seedData
 from flask_migrate import Migrate, upgrade
 from models import User, user_manager
@@ -18,6 +18,7 @@ user_manager.init_app(app,db,User)
 app.register_blueprint(home, url_prefix='/')
 app.register_blueprint(customers, url_prefix='/customer')
 app.register_blueprint(accounts, url_prefix='/account')
+app.register_blueprint(transactions,url_prefix='/transactions')
 
 
 
