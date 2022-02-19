@@ -1,0 +1,28 @@
+{% extends 'basetemplate.html' %} 
+
+{% block title %} Transaction Successful {% endblock title%}
+
+
+{% block content %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Transaction Successful From Account Id {{acc_credit.Id}} To Account Id {{acc_debit.Id}}</h1>
+                        <h1>New Balance: </h1>
+                        <h1>{{acc_credit.Id}}: {{acc_credit.Balance}}</h1>
+                        <h1>{{acc_debit.Id}}: {{acc_debit.Balance}}</h1>
+                        <a href="{{url_for('home.index')}}" class="btn mb-1 btn-primary btn-lg">
+                            Startpage
+                            <!-- <button type="button" class="btn mb-1 btn-primary btn-lg">Startpage</button> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
