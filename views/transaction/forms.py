@@ -25,7 +25,7 @@ class TransactionsDeposit(FlaskForm):
     operation = SelectField("operation", [check_valid_transactions_option],
     choices= [("0",""),("1","Deposit cash"),("2","Salary"),("3","Transfer")],coerce=int)
     
-    submit = SubmitField("Submit")
+    submit_deposit = SubmitField("Submit")
 
 class TransactionCredit(FlaskForm):
     account_id = IntegerField("account_id",
@@ -36,4 +36,15 @@ class TransactionCredit(FlaskForm):
     operation = SelectField("operation", [check_valid_transactions_option],
     choices= [("0",""),("4","ATM withdrawal"),("5","Payment"),("6","Bank withdrawal"),("3","Transfer")],coerce=int)
     
-    submit = SubmitField("Submit")
+    submit_credit = SubmitField("Submit")
+
+class TransferWithinBank(FlaskForm):
+    account_id = IntegerField("Withdraw from Account",
+    [validators.NumberRange(min=1, message='Not a valid account ID!'), check_valid_account_id])
+
+    account_id_debit = IntegerField("Transfer to Account",
+    [validators.NumberRange(min=1, message='Not a valid account ID!'), check_valid_account_id])
+
+    amount = IntegerField("Amount", [validators.NumberRange(min=1),check_sufficient_balance])
+
+    submit_transfer = SubmitField("Submit")

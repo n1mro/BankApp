@@ -47,14 +47,14 @@ def update_account_balance(amount:int, acc:Account,type:TransactionsTypeEnum) ->
     else:
         raise ValueError("Not implemented TransactionsTypeEnum in update_account_balance!")
 
-def make_transaction(form, acc:Account, type:TransactionsTypeEnum) -> None:
+def make_transaction(operation:int,amount:int, acc:Account, type:TransactionsTypeEnum) -> None:
     transaction_to_be_made = Transaction()
     transaction_to_be_made.AccountId = acc.Id
     transaction_to_be_made.Date = datetime.now()
-    transaction_to_be_made.Amount = form.amount.data
+    transaction_to_be_made.Amount = amount
     transaction_to_be_made.Type = get_transaction_type(type)
-    transaction_to_be_made.Operation = get_transaction_operation(TransactionsOperationsEnum(form.operation.data))
+    transaction_to_be_made.Operation = get_transaction_operation(TransactionsOperationsEnum(operation))
     transaction_to_be_made.NewBalance = (
-        acc.Balance + form.amount.data) if (type.Credit == TransactionsTypeEnum.Debit) else (acc.Balance - form.amount.data)
+        acc.Balance + amount) if (type == TransactionsTypeEnum.Debit) else (acc.Balance - amount)
     db.session.add(transaction_to_be_made)
     db.session.commit()
