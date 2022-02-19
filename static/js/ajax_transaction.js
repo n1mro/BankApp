@@ -14,6 +14,7 @@ pageNo = 2;
                 `<tr>
         <td>${transaction.Id}</td>
         <td>${transaction.Type}</td>
+        <td>${transaction.Operation}</td>
         <td>${transaction.Date}</td>
         <td>${transaction.Amount}</td>
         <td>${transaction.NewBalance}</td>
