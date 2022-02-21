@@ -1,14 +1,14 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from models import Account
 from .transactions_enum import TransactionsTypeEnum
 from .forms import TransactionsDeposit, TransactionCredit,TransferWithinBank
-from .transactions_func import check_if_account_exist, make_transaction, update_account_balance
+from .transactions_func import make_transaction, update_account_balance
 
 transactions = Blueprint('transactions',__name__)
 
-@transactions.route("/successful")
-def transaction_successful():
-    return render_template("'transaction/successful.html")
+@transactions.route("/successful_transaction/<acc_id>/<balance>")
+def transaction_successful(acc_id,balance):
+    return render_template("transactions/transaction_successful.html",acc_id=acc_id, balance=balance)
 
 @transactions.route("/deposit", methods=["GET", "POST"])
 def deposit_transaction():
@@ -29,11 +29,7 @@ def deposit_transaction():
 
         update_account_balance(form.amount.data,acc,TransactionsTypeEnum(1))
 
-        return render_template(
-            'transactions/transaction_successful.html', 
-            acc_id=acc.Id, 
-            balance=acc.Balance
-            )
+        return redirect(url_for('transactions.transaction_successful',acc_id=acc.Id, balance=acc.Balance))
 
     return render_template('transactions/deposit.html', form=form)
 
@@ -56,14 +52,22 @@ def credit_transaction():
 
         update_account_balance(form.amount.data,acc,TransactionsTypeEnum(2))
 
-        return render_template(
-            'transactions/transaction_successful.html', 
-            acc_id=acc.Id, 
-            balance=acc.Balance
-            )
+        return redirect(url_for('transactions.transaction_successful',acc_id=acc.Id, balance=acc.Balance))
 
     return render_template('transactions/credit.html', form=form)
 
+@transactions.route(
+    "/transfer_successful/<acc_credit_id>/<acc_debit_id>/<acc_credit_balance>/<acc_debit_balance>", 
+    methods=["GET","POST"])
+def transfer_successful(acc_credit_id,acc_debit_id,acc_credit_balance,acc_debit_balance):
+    return render_template(
+        "transactions/transfer_successful.html",
+        acc_credit_id = acc_credit_id,
+        acc_debit_id = acc_debit_id,
+        acc_credit_balance = acc_credit_balance,
+        acc_debit_balance = acc_debit_balance
+        )
+    
 
 @transactions.route("/transfer", methods=["GET", "POST"])
 def transfer_transaction():
@@ -81,10 +85,14 @@ def transfer_transaction():
         make_transaction(3,form.amount.data,acc_debit,TransactionsTypeEnum(1))
         update_account_balance(form.amount.data,acc_debit,TransactionsTypeEnum(1))
 
-        return render_template(
-            'transactions/transfer_successful.html', 
-            acc_credit=acc_credit,
-            acc_debit=acc_debit
+        return redirect(
+            url_for(
+                'transactions.transfer_successful', 
+                acc_credit_id =acc_credit.Id,
+                acc_debit_id =acc_debit.Id,
+                acc_credit_balance = acc_credit.Balance,
+                acc_debit_balance = acc_debit.Balance
+                )
             )
 
     return render_template('transactions/transfer.html', form=form)
