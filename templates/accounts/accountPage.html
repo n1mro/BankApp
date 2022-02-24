@@ -5,7 +5,6 @@
 {% block content %}
 <div class="content-body">
     <!-- row -->
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -45,51 +44,52 @@
                         </div>
                     </div>
                     <!-- Kolla denna första div. Va först en class="col-lg-12" -->
-                    <div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title">
-                                    <h4>Transactions</h4>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="posts-table">    
-                                            <thead>
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>Transactions</h4>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="posts-table">    
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Type</th>
+                                                <th>Operation</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>New Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for transaction in transactions.items %}
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Type</th>
-                                                    <th>Operation</th>
-                                                    <th>Date</th>
-                                                    <th>Amount</th>
-                                                    <th>New Balance</th>
+                                                    <td>{{transaction.Id}}</td>
+                                                    <td>{{transaction.Type}}</td>
+                                                    <td>{{transaction.Operation}}</td>
+                                                    <td>{{transaction.Date}}</td>
+                                                    <td>{{transaction.Amount}}</td>
+                                                    <td>{{transaction.NewBalance}}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for transaction in transactions.items %}
-                                                    <tr>
-                                                        <td>{{transaction.Id}}</td>
-                                                        <td>{{transaction.Type}}</td>
-                                                        <td>{{transaction.Operation}}</td>
-                                                        <td>{{transaction.Date}}</td>
-                                                        <td>{{transaction.Amount}}</td>
-                                                        <td>{{transaction.NewBalance}}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <a class="btn mb-1 btn-primary" href="javascript:fetchMore({{account.Id}});">Show 5 more</a>
-                            <!-- <button type="button" class="btn mb-1 btn-primary" onclick="javascript:fetchMore({{account.Id}});">Show 20 more</button> -->
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <a class="btn mb-1 btn-primary btn-lg" href="javascript:fetchMore({{account.Id}});">Show 5 more</a>
                         </div>
                     </div>
-                    </div>  
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
-    <!-- #/ container -->
 </div>
+<!-- #/ container -->
+
 {% endblock content %}
-{% block custom_scripts %} <script src="{{url_for('static', filename = './js/ajax_transaction.js')}}"></script> {% endblock custom_scripts %}
+
+{% block custom_scripts %} 
+<script src="{{url_for('static', filename = './js/ajax_transaction.js')}}"></script> 
+{% endblock custom_scripts %}
 
 

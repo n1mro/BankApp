@@ -1,12 +1,14 @@
+import imp
 from flask import Blueprint, render_template, request
 from models import Account, Customer
 from .customers_func import sort_order_func,SortOrderEnum,CustomerColumnEnum
-
+from flask_user import login_required
 
 customers = Blueprint('customers',__name__)
 
 
 @customers.route("/list")
+@login_required
 def table_of_customers():
     sort_order = request.args.get('sort_order', 'asc')
     sort_by_column = request.args.get('sort_column', 'Id')
@@ -36,6 +38,7 @@ def table_of_customers():
 
 
 @customers.route("/<id>")
+@login_required
 def customer_page(id):
     customer = Customer.query.where(Customer.Id==id).first()
     customer_accounts = Account.query.where(Account.CustomerId == id).all()

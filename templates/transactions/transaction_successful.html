@@ -13,7 +13,16 @@
                         <h1>Transaction Successful for Account id {{acc_id}}</h1>
                         <h1>New Balance: {{balance}}</h1>
                         <a href="{{url_for('home.index')}}">
-                            <button type="button" class="btn mb-1 btn-primary btn-lg">Startpage</button>
+                        <button type="button" class="btn mb-1 btn-primary btn-lg">Startpage</button>
+                        </a>
+                        <a href="{{url_for('transactions.deposit_transaction')}}">
+                        <button type="button" class="btn mb-1 btn-primary btn-lg">Deposition</button>
+                        </a>
+                        <a href="{{url_for('transactions.credit_transaction')}}">
+                        <button type="button" class="btn mb-1 btn-primary btn-lg">Withdrawl</button>
+                        </a>
+                        <a href="{{url_for('transactions.transfer_transaction')}}">
+                        <button type="button" class="btn mb-1 btn-primary btn-lg">Transfer within bank</button>
                         </a>
                     </div>
                 </div>
