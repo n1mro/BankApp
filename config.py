@@ -1,14 +1,12 @@
 from dotenv import load_dotenv
 import os
 
+import views
+
 load_dotenv()
 
-class ConfigDebug:
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_AZURE')
-    SECRET_KEY = os.getenv('SECRET_KEY')
-    DEBUG=True
-    TESTING=False
 
+class MailConfig():
     # Flask-Mail SMTP server settings
     MAIL_SERVER = '127.0.0.1'
     MAIL_PORT = 1025
@@ -24,3 +22,19 @@ class ConfigDebug:
     USER_ENABLE_USERNAME = False    # Disable username authentication
     USER_EMAIL_SENDER_NAME = USER_APP_NAME
     USER_EMAIL_SENDER_EMAIL = "noreply@example.com"
+
+class ConfigDebug(MailConfig):
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_AZURE')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    DEBUG=True
+    TESTING=False
+    USER_ENABLE_USERNAME =False
+
+class ConfigTest(MailConfig):
+    SERVER_NAME = "BankApp"
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_LOCAL')
+    WTF_CSRF_ENABLED = False
+    USER_ENABLE_USERNAME =False
+    WTF_CSRF_METHODS = []  # This is the magic
+    TESTING = True
+    LOGIN_DISABLED = True
