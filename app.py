@@ -26,5 +26,5 @@ app.register_blueprint(transactions,url_prefix='/transactions')
 if __name__ == "__main__":
     with app.app_context():
         upgrade()
-    seedData(db)
+        seedData(db)
     app.run()

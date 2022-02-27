@@ -12109,7 +12109,7 @@ table.dataTable thead .sorting::after {
 ---------------------------------------------------------------------- */
 /*  9 - media screen and (max-width: 480px)
 ---------------------------------------------------------------------- */
-@media (max-width: 767px) {
+@media (max-width: 1280px) {
   .icons {
     position: static !important; }
     .icons .dropdown-profile {

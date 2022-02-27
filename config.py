@@ -15,7 +15,7 @@ class MailConfig():
     MAIL_DEFAULT_SENDER = '"MyApp" <noreply@example.com>'
 
     # Flask-User settings
-    USER_APP_NAME = "Flask-User Basic App"      # Shown in and email templates and page footers
+    USER_APP_NAME = "BankApp"      # Shown in and email templates and page footers
     USER_ENABLE_EMAIL = True        # Enable email aution
     USER_ENABLE_USERNAME = False    # Disable username authentication
     USER_EMAIL_SENDER_NAME = USER_APP_NAME
@@ -28,11 +28,24 @@ class ConfigDebug(MailConfig):
 
     DEBUG=True
     TESTING=False
-    
+
+class ConfigProduction(MailConfig):
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_AZURE')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+    DEBUG=False
+    TESTING=False
+
+    USER_ENABLE_CHANGE_PASSWORD = False
+    USER_ENABLE_REGISTER = False
 
 class ConfigTest(MailConfig):
     SERVER_NAME = "BankApp.com"
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI_LOCAL')
+    SECRET_KEY = os.getenv('SECRET_KEY_TEST')
+    
     WTF_CSRF_ENABLED = False
     WTF_CSRF_METHODS = []  # This is the magic
+
     TESTING = True
+    DEBUG=False
