@@ -110,8 +110,8 @@ def AddLoginIfNotExists(email:str, passwd:str, roles:list[str]):
 def seedData(db):
     AddRoleIfNotExists("Admin")
     AddRoleIfNotExists("Cashier")
-    AddLoginIfNotExists("admin@example.com", "Hejsan123#",["Admin"])
-    AddLoginIfNotExists("cashier@example.com", "Hejsan123",["Cashier"])
+    AddLoginIfNotExists("stefan.holmberg@systementor.se", "Hejsan123#",["Admin"])
+    AddLoginIfNotExists("stefan.holmberg@nackademin.se", "Hejsan123",["Cashier"])
     antal =  Customer.query.count()
     while antal < 5000:
         customer = Customer()
