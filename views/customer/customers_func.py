@@ -37,3 +37,6 @@ def select_customer_column(column:CustomerColumnEnum):
     else:
         raise ColumnError
  
+
+def check_if_valid_customer_id(id:int) -> bool:
+    return True if Customer.query.where(Customer.Id == id).first() else False

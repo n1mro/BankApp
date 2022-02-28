@@ -113,7 +113,7 @@ def seedData(db):
     AddLoginIfNotExists("stefan.holmberg@systementor.se", "Hejsan123#",["Admin"])
     AddLoginIfNotExists("stefan.holmberg@nackademin.se", "Hejsan123#",["Cashier"])
     antal =  Customer.query.count()
-    while antal < 5000:
+    while antal < 5007:
         customer = Customer()
         
         customer.GivenName, customer.Surname = barnum.create_name()

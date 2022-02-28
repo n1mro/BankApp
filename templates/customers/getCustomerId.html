@@ -1,0 +1,35 @@
+{% extends 'basetemplate.html' %} 
+{% from "macros/_form_helper.html" import  render_field %}
+
+{% block title %} Customer Get ID {% endblock title%}
+
+
+{% block content %}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Enter Customer Id</h4>
+                    <div class="basic-form">
+                        <form method="post">
+                            {{ form.csrf_token }}
+                            <div class="form-row">
+                                <div >
+                                    {{ render_field(form.customer_id) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form.submit_customer_id(class="btn btn-dark")}}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

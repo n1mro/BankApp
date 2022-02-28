@@ -1,8 +1,8 @@
-import imp
-from flask import Blueprint, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 from models import Account, Customer
 from .customers_func import sort_order_func,SortOrderEnum,CustomerColumnEnum
 from flask_user import login_required
+from .forms import CustomerID
 
 customers = Blueprint('customers',__name__)
 
@@ -48,5 +48,20 @@ def customer_page(id):
              customer=customer,
              accounts=customer_accounts,
              account_balance_sum = sum_of_accounts_balance)
+
+
+@customers.route("/customerId",methods=["GET", "POST"])
+@login_required
+def get_customer_id():
+    form = CustomerID()
+
+    if request.method == "GET":
+        return render_template('customers/getCustomerId.html', form=form)
+
+    if form.validate_on_submit():
+        return redirect(f"/customer/{form.customer_id.data}")
+        #return redirect(url_for('customers.customer_page'), id = form.customer_id.data)
+    
+    return render_template('customers/getCustomerId.html', form=form)
     
 
