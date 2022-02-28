@@ -27,7 +27,7 @@ def table_of_customers():
     sort_by = sort_order_func(SortOrderEnum(sort_order),CustomerColumnEnum(sort_by_column))
 
     table_of_customer = table_of_customer.order_by(sort_by())
-    pagination_object = table_of_customer.paginate(page,20,False)
+    pagination_object = table_of_customer.paginate(page,50,False)
     
     return render_template('customers/listCustomers.html',
             page=page,
