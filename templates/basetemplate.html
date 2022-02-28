@@ -162,8 +162,8 @@
       <div class="nk-sidebar">
         <div class="nk-nav-scroll">
           <ul class="metismenu" id="menu">
-            <li class="nav-label">Navigation</li>
             {%  if current_user.is_authenticated  %}
+            <li class="nav-label">Customers</li>
             <li>
               <a
                 class="has-arrow"
@@ -179,6 +179,29 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-label">Transactions</li>
+            <li>
+              <a
+                class="has-arrow"
+                href="javascript:void()"
+                aria-expanded="false"
+              >
+                <i class="fa fa-handshake-o menu-icon"></i
+                ><span class="nav-text">Transactions</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href="{{url_for('transactions.deposit_transaction')}}">
+                  <i class="fa fa-money menu-icon"></i>Make a deposit</a>
+                </li>
+                <li><a href="{{url_for('transactions.credit_transaction')}}">
+                  <i class="fa fa-credit-card menu-icon"></i>Make a credit</a>
+                </li>
+                <li><a href="{{url_for('transactions.transfer_transaction')}}">
+                  <i class="fa fa-exchange menu-icon"></i>Transfer within bank</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-label">Logout</li>
             <li>
               <a href="{{ url_for('user.logout') }}" aria-expanded="false">
                 <i class="icon-logout menu-icon"></i
@@ -186,6 +209,7 @@
                   <span class="nav-text">Logout</span></a>
             </li>
             {%  else    %}
+            <li class="nav-label">Login</li>
             <li>
               <a href="{{ url_for('user.login') }}" aria-expanded="false">
                 <i class="icon-login menu-icon"></i
