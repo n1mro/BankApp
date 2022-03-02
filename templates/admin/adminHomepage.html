@@ -1,0 +1,67 @@
+{% extends 'basetemplate.html' %}
+
+{% block title %}
+Admin homepage
+{% endblock title%}
+
+{% block content %}
+<div class="content-body">
+    <!-- row -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Admin Profile</h4>
+                                            <div>
+                                                <h5>Email:  {{email}}</h5>
+                                                <h5>User ID :  {{id}}</h5>
+                                                <h5>First Name :  {{first_name}}</h5>
+                                                <h5>Last Name :  {{last_name}}</h5>
+                                                {% for role in roles %}
+                                                <h5>Role :  {{role}}</h5>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="button-group align-center">
+                                                    <div class="btn-group-vertical">
+                                                        <a href="{{url_for('admin.admin_create_new_user')}}">
+                                                            <button type="button" class="btn mb-1 btn-primary btn-lg">Create A New User <span class="btn-icon-right"><i class="fa fa-user-circle-o"></i></span>
+                                                            </button>
+                                                        </a>
+                                                        <a href="{{url_for('admin.admin_update_user_redirect')}}">
+                                                            <button type="button" class="btn mb-1 btn-primary btn-lg">Uppdate A User <span class="btn-icon-right"><i class="fa fa-cog"></i></span>
+                                                            </button>
+                                                        </a>
+                                                        <a href="{{url_for('admin.admin_delete_user')}}">
+                                                            <button type="button" class="btn mb-1 btn-primary btn-lg">Delete A User<span class="btn-icon-right"><i class="fa fa-times-circle"></i></span>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+{% endblock content %}

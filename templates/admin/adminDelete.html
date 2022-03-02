@@ -1,0 +1,62 @@
+{% extends 'basetemplate.html' %}
+{% from "macros/_form_helper.html" import  render_field_control_only, render_field_control_placeholder%}
+
+{% block title %}
+Admin Delete User
+{% endblock title%}
+
+{% block header_links %}
+<link href="{{url_for('static', filename = 'plugins/sweetalert/css/sweetalert.css')}}" rel="stylesheet">
+{% endblock header_links %}
+
+{% block content %}
+<div class="content-body">
+    <!-- row -->
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Delete User</h2>
+                        <br>
+                        <form class="form-valide" action="" method="POST">
+
+                            {{ form.csrf_token }}
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="{{form.user_id.id}}">First Name <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-lg-6">
+                                    {{render_field_control_placeholder(form.user_id, "Enter User Id...")}}
+                                </div>
+                            </div>
+    
+                        </form>
+                        
+                        <div class="sweetalert m-t-30">
+                            <button class="btn btn-danger btn sweet-confirm">Sweet Wrong</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+{% endblock content %}
+
+{% block custom_scripts %}
+<script src="{{url_for('static', filename = 'plugins/sweetalert/js/sweetalert.min.js')}}"></script>
+<script>
+document.querySelector(".sweet-confirm").onclick=function(){
+    swal({
+        title:"Are you sure to delete ?",
+        text:"Ongoing implementation!! Not Yet Implemented!!",
+        type:"warning",
+        showCancelButton:!0,
+        confirmButtonColor:"#DD6B55",
+        confirmButtonText:"Yes, delete it !!",
+        closeOnConfirm:!1},
+        function(){swal("Deleted !!","We use our imaginary and think that user has been deleted !!","success")})}
+</script>
+{% endblock custom_scripts %}
