@@ -49,13 +49,19 @@ def update_account_balance(amount:int, acc:Account,type:TransactionsTypeEnum) ->
 
 def make_transaction(operation:int,amount:int, acc:Account, type_of_transaction:TransactionsTypeEnum) -> None:
     transaction_to_be_made = Transaction()
+    
     transaction_to_be_made.AccountId = acc.Id
     transaction_to_be_made.Date = datetime.now()
     transaction_to_be_made.Amount = amount
+
     transaction_to_be_made.Type = get_transaction_type(type_of_transaction)
+
     transaction_to_be_made.Operation = get_transaction_operation(TransactionsOperationsEnum(operation))
+
     transaction_to_be_made.NewBalance = (
         acc.Balance + amount) if (type_of_transaction == TransactionsTypeEnum.Debit) else (acc.Balance - amount)
+
     db.session.add(transaction_to_be_made)
     db.session.commit()
+
     update_account_balance(amount,acc,type_of_transaction)

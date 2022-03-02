@@ -1,0 +1,87 @@
+{% extends 'basetemplate.html' %}
+{% from "macros/_form_helper.html" import  render_field_control_only %}
+{% from "macros/_form_helper.html" import  render_field_control_placeholder %}
+
+{% block title %}
+Admin Create User
+{% endblock title%}
+
+{% block content %}
+<div class="content-body">
+    <!-- row -->
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Create New User</h2>
+                        <br>
+                        <div class="form-validation">
+                            <form class="form-valide" action="" method="POST">
+                                {{ form.csrf_token }}
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.first_name.id}}">First Name <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_placeholder(form.first_name, "Enter First Name...")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.last_name.id}}">First Name <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_placeholder(form.last_name, "Enter Last Name...")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.email.id}}">Email <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_placeholder(form.email, "Enter Email...")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.password.id}}">Password <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_placeholder(form.password, "Choose a safe one..")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.password_confirm.id}}">Confirm Password <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_placeholder(form.password_confirm, ".. And confirm it!")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.roles.id}}">Role<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-6">
+                                        {{render_field_control_only(form.roles)}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-4 col-form-label" for="{{form.active.id}}">Active<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-8">
+                                        <label class="css-control css-control-primary css-checkbox" for="{{form.active.id}}">
+                                            {{form.active(class="css-control-input")}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-8 ml-auto">
+                                        {{form.submit_user_create(class="btn btn-primary",text="Create User")}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+{% endblock content %}

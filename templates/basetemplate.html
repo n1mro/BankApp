@@ -204,6 +204,15 @@
                 </li>
               </ul>
             </li>
+            {% if current_user.has_roles('Admin') %}
+            <li class="nav-label">Admin</li>
+            <li>
+              <a href="{{ url_for('admin.admin_homepage') }}" aria-expanded="false">
+                <i class="fa fa-user-secret menu-icon"></i
+                  >
+                  <span class="nav-text">Admin</span></a>
+            </li>
+            {% endif %}
             <li class="nav-label">Logout</li>
             <li>
               <a href="{{ url_for('user.logout') }}" aria-expanded="false">

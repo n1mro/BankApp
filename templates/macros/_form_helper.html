@@ -12,3 +12,29 @@
 </div>
 
 {% endmacro %}
+
+{% macro render_field_control_only(field) %}
+
+<div class="form-group">
+    {{ field(class="form-control")  }}
+    <!-- <input type="email" id="nf-email" name="nf-email" placeholder="Enter Email.." class="form-control"> -->
+    {% for error in field.errors %}
+    <span class="help-block">
+        {{error}}</span>
+    {% endfor   %}        
+</div>
+
+{% endmacro %}
+{% macro render_field_control_placeholder(field,placeholder) %}
+
+<div class="form-group">
+    {{ field(class="form-control" , placeholder=placeholder)  }}
+    <!-- <input type="email" id="nf-email" name="nf-email" placeholder="Enter Email.." class="form-control"> -->
+    {% for error in field.errors %}
+    <span class="help-block">
+        {{error}}</span>
+    {% endfor   %}        
+</div>
+
+{% endmacro %}
+
